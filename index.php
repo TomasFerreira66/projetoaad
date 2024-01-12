@@ -71,6 +71,22 @@ while($row = mysqli_fetch_assoc($result)) {
 
 ?>
 
+<?php 
+
+        if(isset($_GET['update_msg'])){
+            echo "<h7>" .$_GET['update_msg']. "</h7>";
+        }
+
+?>
+
+<?php 
+
+        if(isset($_GET['delete_msg'])){
+            echo "<h7>" .$_GET['delete_msg']. "</h7>";
+        }
+
+?>
+
 <form action="insert_data.php" method="post">
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -157,6 +173,54 @@ while($row = mysqli_fetch_assoc($result)) {
                 <label for="valor_avaliado">Valor Avaliado</label>
                 <input type="text" name="valor_avaliado" class="form-control">
         </div>
+
+        <div class="form-group">
+                <label for="tipo_moradia">Tipo</label>
+                <select name="tipo_moradia" class="form-control">
+                    <?php
+                    $queryTipo = "select ID, Descrição from tipopropriedade";
+                    $resultTipo = mysqli_query($connection, $queryTipo);
+
+                    if ($resultTipo) {
+                        while ($rowTipo = mysqli_fetch_assoc($resultTipo)) {
+                            $TipoID = $rowTipo['ID'];
+                            $TipoDescricao = $rowTipo['Descrição'];
+                            echo "<option value=\"$TipoID\">$TipoDescricao</option>";
+                        }
+
+                        mysqli_free_result($resultTipo);
+                    } else {
+                        echo "Error: " . mysqli_error($connection);
+                    }
+                    ?>
+                </select>
+        </div>
+
+        <div class="form-group">
+                <label for="numero_quartos">Número de quartos</label>
+                <input type="text" name="numero_quartos" class="form-control">
+        </div>
+
+        <div class="form-group">
+                <label for="classe_energetica">Classe energética</label>
+                <input type="text" name="classe_energetica" class="form-control">
+        </div>
+
+        <div class="form-group">
+                <label for="numero_casas_banho">Número Casas de banho</label>
+                <input type="text" name="numero_casas_banho" class="form-control">
+        </div>
+
+        <div class="form-group">
+                <label for="garagem">Garagem</label>
+                <input type="text" name="garagem" class="form-control">
+        </div>
+
+        <div class="form-group">
+                <label for="tamanho">Tamanho (m2)</label>
+                <input type="text" name="tamanho" class="form-control">
+        </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>

@@ -12,7 +12,7 @@ if(!$connection){
 
 } else {
 
-    echo "yeess";
+    echo "";
 }
 
 ?>
