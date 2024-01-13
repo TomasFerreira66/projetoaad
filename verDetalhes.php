@@ -21,7 +21,7 @@ if(isset($_GET['id'])){
 
     $id = $_GET['id'];
 
-$nome = $id;  // Replace "some_value" with the actual value you want to pass as the parameter
+$nome = $id; 
 
 $storedProcedure = "CALL `GetDetalhes`('$nome');";
 $resultProcedure = mysqli_query($connection, $storedProcedure);
@@ -30,7 +30,7 @@ if (!$resultProcedure) {
     die("Query Failed: " . mysqli_error($connection));
 } else {
     while ($rowProcedure = mysqli_fetch_assoc($resultProcedure)) {
-        print_r($rowProcedure);  // Assuming you want to print the result row, not the stored procedure call
+       
         ?>
 <tr>
 <td><?php echo $rowProcedure['IDPropriedade']; ?></td>
