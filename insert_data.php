@@ -39,7 +39,8 @@ if ($nome_cliente == "" || empty($nome_cliente)) {
     
 } else {
 
-    $query = "insert into `propriedades` (`DiaRegisto`, `IDCliente`, `IDFuncionario`, `Rua`, `Codigo Postal`, `ValorAvaliado`) VALUES (CURDATE(), '$nome_cliente', '$nome_funcionario', '$rua', '$codigo_postal', '$valor_avaliado')";
+    $query = "insert into `propriedades` (`DiaRegisto`, `IDCliente`, `IDFuncionario`, `Rua`, `Codigo Postal`, `ValorAvaliado`) 
+    VALUES (CURDATE(), '$nome_cliente', '$nome_funcionario', '$rua', '$codigo_postal', '$valor_avaliado')";
 
     $result = mysqli_query($connection, $query);
 
@@ -51,7 +52,8 @@ if ($nome_cliente == "" || empty($nome_cliente)) {
         $last_inserted_id = mysqli_insert_id($connection);
 
         // Use the ID in the second INSERT query
-        $query_detalhes = "INSERT INTO `propriedades_detalhes` (`IDPropriedade`, `Tipo`, `NumeroQuartos`, `ClasseEnergetica`, `NumeroCasaBanho`, `Garagem`, `Tamanho`) VALUES ('$last_inserted_id', '$tipo_moradia', '$numero_quartos', '$classe_energetica', '$numero_casas_banho', '$garagem', '$tamanho')";
+        $query_detalhes = "INSERT INTO `propriedades_detalhes` (`IDPropriedade`, `Tipo`, `NumeroQuartos`, `ClasseEnergetica`, `NumeroCasaBanho`, `Garagem`, `Tamanho`) 
+        VALUES ('$last_inserted_id', '$tipo_moradia', '$numero_quartos', '$classe_energetica', '$numero_casas_banho', '$garagem', '$tamanho')";
 
         $result_detalhes = mysqli_query($connection, $query_detalhes);
 
