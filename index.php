@@ -6,6 +6,7 @@
 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Adicionar Moradia</button>
 </div>
 
+
 <table class="table table-hover table-bordered table-striped">
     <thead>
         <tr>
@@ -18,12 +19,13 @@
             <th>ValorAvaliado</th>
             <th>Atualizar</th>
             <th>Eliminar</th>
+            <th>Detalhes</th>
         </tr>
     </thead>
 
     <tbody>
         <?php
-
+ 
 $query = "select propriedades.*, Clientes.Nome As NomeCliente, funcionario.Nome As NomeFuncionario
 from propriedades 
 inner join Clientes ON propriedades.IDCliente = Clientes.ID
@@ -46,6 +48,7 @@ while($row = mysqli_fetch_assoc($result)) {
   <td><?php echo $row['ValorAvaliado']; ?></td>
   <td><a href="update_page_1.php?id=<?php echo $row['ID']; ?>" class="btn btn-success">Atualizar</a></td>
   <td><a href="delete_page_1.php?id=<?php echo $row['ID']; ?>" class="btn btn-danger">Eliminar</a></td>
+  <td><a href="verDetalhes.php?id=<?php echo $row['ID']; ?>" class="btn btn-info">Ver detalhes</a></td>
 </tr>
 <?php
 }
