@@ -48,10 +48,8 @@ if ($nome_cliente == "" || empty($nome_cliente)) {
         die("Query Failed: " . mysqli_error());
     } else {
 
-        // Retrieve the last inserted ID
         $last_inserted_id = mysqli_insert_id($connection);
 
-        // Use the ID in the second INSERT query
         $query_detalhes = "INSERT INTO `propriedades_detalhes` (`IDPropriedade`, `Tipo`, `NumeroQuartos`, `ClasseEnergetica`, `NumeroCasaBanho`, `Garagem`, `Tamanho`) 
         VALUES ('$last_inserted_id', '$tipo_moradia', '$numero_quartos', '$classe_energetica', '$numero_casas_banho', '$garagem', '$tamanho')";
 

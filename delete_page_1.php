@@ -15,7 +15,7 @@ if (!$result_detalhes) {
     die("Query Failed: " . mysqli_error($connection));
 }
 
-// Now, delete from propriedades
+
 $query = "DELETE FROM `propriedades` WHERE `ID` = '$id'";
 $result = mysqli_query($connection, $query);
 
